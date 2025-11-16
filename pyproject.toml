@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anthropic-router"
+version = "0.1.0"
+description = "HTTP proxy for routing Anthropic/OpenAI API calls to local CLI tools"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "jimmc414"}
+]
+keywords = ["anthropic", "openai", "proxy", "cli", "router"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: Proxy Servers",
+]
+dependencies = [
+    "anthropic>=0.18.0",
+    "openai>=1.0.0",
+    "mitmproxy>=10.0.0",
+    "cryptography>=41.0.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[project.scripts]
+anthropic-router = "anthropic_router.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/mathhuman/claude_n_codex_api_proxy"
+Repository = "https://github.com/mathhuman/claude_n_codex_api_proxy"
+Issues = "https://github.com/mathhuman/claude_n_codex_api_proxy/issues"
+
+[tool.setuptools]
+py-modules = [
+    "proxy_server",
+    "anthropic_router",
+    "openai_router",
+    "claude_code_client",
+    "codex_client",
+    "claude_code_proxy_handler",
+    "codex_proxy_handler",
+    "utils",
+    "start_proxy",
+    "setup_proxy",
+]
+
+[tool.setuptools.packages.find]
+include = ["anthropic_router*"]
